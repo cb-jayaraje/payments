@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .utilities_button {
+      @apply text-gray-900 px-4 py-2 inline-flex rounded-md items-center text-sm font-normal hover:bg-purple-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-300;
+    }
+  
+    .utilities_button__active {
+      @apply text-gray-50 px-4 py-2 rounded-md inline-flex items-center text-sm font-normal bg-purple-800  hover:bg-purple-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-300;
+    }
+  
+    .menu-a {
+      @apply hover:bg-purple-50 text-gray-700 group-hover:text-purple-700  flex items-center px-2 py-2 text-sm font-medium leading-5 rounded-md;
+    }
+  
+    .menu-icon {
+      @apply text-gray-500 group-hover:text-purple-700 mr-3 flex-shrink-0 h-6 w-6;
+    }
+  }
