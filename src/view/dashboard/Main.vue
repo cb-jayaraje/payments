@@ -2,8 +2,12 @@
     
            <div class="max-w-[99%] mx-auto  sm:px-6  ">
 
+             
+             <CbReview v-if="cbReviewcomp" />
 
-               <div class="bg-white px-4 rounded-md shadow-md py-3 flex mt-6 justify-between">
+              <!-- configure -->
+               <div class="bg-white px-4 rounded-md shadow-md py-3 flex mt-6 justify-between" v-else>
+                  
                    <div class="flex items-center gap-x-4">
                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M0 8C0 3.58172 3.58172 0 8 0H32C36.4183 0 40 3.58172 40 8V32C40 36.4183 36.4183 40 32 40H8C3.58172 40 0 36.4183 0 32V8Z" fill="#4E0EA6"/>
@@ -16,9 +20,11 @@
 </svg>
 </div>
                    </div>
-  <button type="button" class="btn-outline px-4 py-2 text-sm bg-[#6200EA] text-white hover:bg-purple-900 ">Configure now</button>
+                   
+  <router-link to="/payment_gateways"  class="btn-outline px-4 py-2 text-sm bg-[#6200EA] text-white hover:bg-purple-900 c">Configure now</router-link>
 
                </div>
+                  <!-- configure -->
 
             <h1 class="text-2xl font-semibold text-gray-900 "></h1>
             <section class="text-gray-600 body-font pt-10">
@@ -52,3 +58,20 @@
          
         </div>
 </template>
+
+<script>
+
+import CbReview from "../../components/payments/CbReview.vue"
+
+  export default {
+    components: {
+      CbReview
+    },
+    data(){},
+    computed: {
+      cbReviewcomp(){
+        return this.$store.getters['cbReview']
+      }
+    }
+  }
+</script>

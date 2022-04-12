@@ -1,7 +1,7 @@
 <template>
 
 <!--inner header-->
-    <div class="bg-white h-16 w-full shadow-md flex justify-between px-4 items-center">
+    <div class="bg-white h-16 w-full shadow-md flex justify-between px-4 items-center ">
        <div class="flex items-center gap-x-3">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
@@ -13,11 +13,13 @@
        </div>
 
         <div>
+            
              <button type="button" class="btn-outline px-4 py-2 text-sm items-center bg-purple-900 text-white hover:bg-purple-800 ">
                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
 </svg>
                  Add Gateway</button>
+                
         </div>
 
     </div>
@@ -114,35 +116,11 @@ ADD A GATEWAY to get started.</p>
 
 
     <!-- chargebee payments model -->
-<div class="fixed z-10 inset-0 overflow-y-auto " aria-labelledby="modal-title" role="dialog" aria-modal="true" v-show="paymentModal" >
-  <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0 ">
-    <!--
-      Background overlay, show/hide based on modal state.
+<base-modal v-show="paymentModal">
+    
 
-      Entering: "ease-out duration-300"
-        From: "opacity-0"
-        To: "opacity-100"
-      Leaving: "ease-in duration-200"
-        From: "opacity-100"
-        To: "opacity-0"
-    -->
-    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
-
-    <!-- This element is to trick the browser into centering the modal contents. -->
-    <span class="hidden sm:inline-block sm:align-middle sm:h-screen " aria-hidden="true">&#8203;</span>
-
-    <!--
-      Modal panel, show/hide based on modal state.
-
-      Entering: "ease-out duration-300"
-        From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-        To: "opacity-100 translate-y-0 sm:scale-100"
-      Leaving: "ease-in duration-200"
-        From: "opacity-100 translate-y-0 sm:scale-100"
-        To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-    -->
-    <div v-click-outside="closeModal" class="relative w-full inline-block align-bottom bg-white rounded-lg pt-5 pb-4 text-left  shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-5xl sm:w-full ">
-      
+     <div v-click-outside="closeModal" class="relative w-full inline-block align-bottom bg-white rounded-lg pt-5 pb-4 text-left  shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-5xl sm:w-full ">
+     
       <div class=""> 
       
           <div class="flex px-20 py-5 justify-between items-center">
@@ -196,20 +174,31 @@ ADD A GATEWAY to get started.</p>
      
       </div>
       <div class="text-right px-20 py-10">
+          
             <div class="flex items-center justify-end gap-x-4">
                 <button type="button" class="btn-outline px-4 py-2 text-sm ">Not right now, later</button>
                 <button type="button" class="btn-outline px-4 py-2 text-sm ">Share this Info</button>
-                <button type="button" class="btn-outline px-4 py-2 text-sm bg-orange-500 text-white hover:bg-orange-600  focus:ring-orange-500">Try Sandbox now</button>
+                <router-link to="/configure-chargebee-payments" class="btn-outline px-4 py-2 text-sm bg-orange-500 text-white hover:bg-orange-600  focus:ring-orange-500">Try Sandbox now</router-link>
             </div>
+           
       </div>
+      
     </div>
-  </div>
-</div>
+  
+</base-modal>
+
            
 </template>
 
 <script>
+
+import BaseModal from './../../../components/common/BaseModal.vue'
+
+
 export default {
+    components: {
+        BaseModal
+    },
     data(){
         return{
             paymentModal: false
@@ -217,7 +206,7 @@ export default {
     },
 
     computed: {
-        
+       
     },
     methods:{
         closeModal() {

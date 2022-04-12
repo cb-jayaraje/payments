@@ -5,6 +5,11 @@ import Dashboard from './../view/dashboard/Dashboard.vue'
 import Main from './../view/dashboard/Main.vue'
 import Settings from './../view/settings/Settings.vue'
 import PaymentGateway from '../view/settings/configure-chargebee/PaymentGateway.vue';
+import ConfigurePayments from '../view/settings/configure-chargebee/configure/Configure.vue'
+import BusinessProfile from '../view/settings/configure-chargebee/configure/BusinessProfile.vue'
+import OperationsOwnership from '../view/settings/configure-chargebee/configure/OperationsOwnership.vue'
+import Settlement from '../view/settings/configure-chargebee/configure/Settlement.vue';
+import SettlementSuccess from '../view/settings/configure-chargebee/configure/SettlementSuccess.vue'
 
 
 const routes = [
@@ -31,7 +36,32 @@ const routes = [
                 component: PaymentGateway
             }
         ]
+    },
+    {
+        path: '/configure-chargebee-payments',
+        name: 'configure',
+        component: ConfigurePayments,
+        children: [
+            {
+                path: '',
+                component: BusinessProfile
+            },
+            {
+                path: '/operations-ownership',
+                component: OperationsOwnership
+            },
+            {
+                path: '/settelment',
+                component: Settlement
+            },
+            
+        ]
+    },
+    {
+        path: '/settelment-success',
+        component: SettlementSuccess
     }
+
 ];
 
 const router = createRouter({
