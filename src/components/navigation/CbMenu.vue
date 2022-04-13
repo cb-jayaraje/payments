@@ -1,7 +1,7 @@
 <template>
      <nav class="mt-5 flex-1 px-2 bg-white space-y-1">
     <!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-600 hover:bg-gray-50 hover:text-gray-900" -->
-    <a href="#" class="menu-a">
+    <router-link to='/'  class="menu-a">
       <!--
         Heroicon name: outline/home
 
@@ -11,7 +11,7 @@
         <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
       </svg>
       Home
-    </a>
+    </router-link>
 
     <a href="#" class="menu-a">
       <!-- Heroicon name: outline/users -->

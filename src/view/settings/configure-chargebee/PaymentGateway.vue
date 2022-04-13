@@ -58,7 +58,8 @@
            <!--alert ends-->
             <div class="h-5"></div>
             <!--card -->
-            <div class="bg-white rounded-lg p-6 relative">
+
+            <div class="bg-white rounded-lg p-6 relative" v-if="!cbReview">
                 <div class="grid grid-cols-2 gap-6">
                     <div class="flex items-center gap-x-6 animate-pulse" v-for="item in [1,2,3,4]" :key="item">
                         <div class="bg-gray-100 h-16 w-20"></div>
@@ -74,6 +75,24 @@
 ADD A GATEWAY to get started.</p>
                 </div>
             </div>
+
+
+            <!-- eles -->
+            <div v-else>
+                    <div class="text-base font-semibold py-6">Gateway Connected (1)</div>
+                    <div class="bg-white rounded-lg p-6 relative flex items-center justify-between">
+                        <div class="flex items-center gap-x-8">
+                            <img src="./../../../assets/images/chargebee-payments.svg" class="h-10" alt="">
+                            <p>Chargebee Payments</p>
+                        </div>
+
+                        <a @click="cbPaymentActive"  class=" cursor-pointer hover:underline inline-flex items-center text-xs text-blue-600">Manage <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+</svg></a>
+                    </div>
+
+            </div>
+
             <!--card -->
 
             <div class="text-base font-semibold py-6">Configure Gateways</div>
@@ -116,6 +135,7 @@ ADD A GATEWAY to get started.</p>
 
 
     <!-- chargebee payments model -->
+<div v-show="cbReview === 'configure'">
 <base-modal v-show="paymentModal">
     
 
@@ -186,7 +206,7 @@ ADD A GATEWAY to get started.</p>
     </div>
   
 </base-modal>
-
+</div>
            
 </template>
 
@@ -206,11 +226,17 @@ export default {
     },
 
     computed: {
-       
+       cbReview(){
+           return this.$store.getters['cbReviewStatus']
+       }
     },
     methods:{
         closeModal() {
             this.paymentModal = false
+        },
+        cbPaymentActive(){
+            this.$store.dispatch('cbReviewChange', {cbStatus: 'success'});
+            this.$router.push('/configure-gateway')
         }
     },
 
@@ -218,7 +244,8 @@ export default {
         setTimeout(()=>{
             this.paymentModal = true
         }, 1000);
-    }
+    },
+   
     
 }
 </script>

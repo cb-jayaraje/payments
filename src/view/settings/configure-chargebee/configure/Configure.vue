@@ -31,35 +31,63 @@
         </div>
         
         <!--tabs-->
-        <div class="flex pt-8 pl-4 items-center gap-x-8 pb-3">
-            <!-- 1 -->
-            <div class="flex items-center gap-x-4">
+
+        <!--
+  This example requires Tailwind CSS v2.0+ 
+  
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ],
+  }
+  ```
+-->
+<div class="pb-5 border-b border-gray-200 sm:pb-0">
+ 
+  <div class="mt-3 sm:mt-10">
+   
+    <!-- Tabs at small breakpoint and up -->
+    <div class="hidden sm:block">
+      <nav class="-mb-px flex space-x-8">
+        <!-- Current: "border-indigo-500 text-indigo-600", Default: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" -->
+        <a href="#" class=" inline-flex gap-x-4 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm" :class="step==='step1' ? 'border-indigo-500 text-indigo-600': 'border-transparent text-gray-500 ' "> 
                 
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
   <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
 </svg>
                 <p class="text-sm text-slate-500">1. Business Profile</p>
-            </div>
-            <!-- 1 -->
-            <!-- 1 -->
-            <div class="flex items-center gap-x-4">
+             </a>
+
+         <a href="#" :class="step==='step2' ? 'border-indigo-500 text-indigo-600': 'border-transparent text-gray-500' " class="inline-flex gap-x-4  hover:text-gray-700 hover:border-gray-300 whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm"> 
                 
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
   <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
 </svg>
                 <p class="text-sm text-slate-500">2. Operations and Ownership</p>
-            </div>
-            <!-- 1 -->
-            <!-- 1 -->
-            <div class="flex items-center gap-x-4">
+             </a>
+
+                <a href="#" :class="step==='step3' ? 'border-indigo-500 text-indigo-600 ': 'border-transparent text-gray-500' " class=" inline-flex gap-x-4  hover:text-gray-700 hover:border-gray-300 whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm"> 
                 
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
   <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
 </svg>
-                 <p class="text-sm text-slate-500">3. Settlements and Processing Info </p>
-            </div>
-            <!-- 1 -->
-        </div>
+                <p class="text-sm text-slate-500">3. Settlements and Processing Info</p>
+             </a>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+
+
+   
         <!--tabs -end -->
 
        
@@ -91,6 +119,10 @@ export default {
     computed: {
          scroll() {
             return this.scroll
+        },
+
+        step() {
+            return this.$store.getters['step'];
         }
     },
     methods: {
@@ -99,11 +131,11 @@ export default {
             this.$store.dispatch('settlement/modalOpen', {modalOpen: true})
         },
         proceed(val){
-            console.log("proced ", val)
+            
         },
         handeleScroll(event){
             let scrollPostion = document.documentElement.scrollTop;
-             console.log(scrollPostion)
+         
              
             let mainH = document.querySelector('#mainHeader');
             if(window.scrollY > mainH.offsetTop) {
@@ -120,7 +152,7 @@ export default {
     //     el.scrollIntoView({ behavior: "smooth", block: "end" });
     //   }
      let scrollPostion = document.documentElement.scrollTop;
-     console.log(scrollPostion)
+
     let cont = document.querySelector('#container')
     const contt = this.$refs['container'].getBoundingClientRect().top;
     let conttt = contt;

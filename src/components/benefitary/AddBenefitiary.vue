@@ -4,7 +4,7 @@
       <div class=""> 
       
           <div class="flex px-20 py-5 justify-between items-center" >
-              <img src="./../../../assets/images/chargebee-payments.svg" class="h-10" alt="">
+              <img src="./../../assets/images/chargebee-payments.svg" class="h-10" alt="">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 cursor-pointer hover:bg-purple-800 rounded-md hover:text-white  text-gray-400" @click="closeModal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
 </svg>

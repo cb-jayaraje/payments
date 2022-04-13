@@ -70,19 +70,22 @@ export default {
 
         checkRouter (routes) {
             if(routes === '/configure-chargebee-payments' || routes === '/configure-chargebee-payments/'){
-            this.nav1 = true
+            this.nav1 = true;
+            this.$store.dispatch('changeStep', {step: 'step1'})
         }else {
             this.nav1 = false
         }
 
         if(routes === '/operations-ownership' || routes === '/operations-ownership/') {
             this.nav2 = true
+              this.$store.dispatch('changeStep', {step: 'step2'})
         }else {
             this.nav2 = false
         }
 
           if(routes === '/settelment' || routes === '/settelment/') {
             this.nav3 = true
+              this.$store.dispatch('changeStep', {step: 'step3'})
         }else {
             this.nav3 = false
         }

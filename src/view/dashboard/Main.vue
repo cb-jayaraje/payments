@@ -3,10 +3,12 @@
            <div class="max-w-[99%] mx-auto  sm:px-6  ">
 
              
-             <CbReview v-if="cbReviewcomp" />
+             <CbReview v-if="cbStatus == 'review' " />
+            
 
-              <!-- configure -->
-               <div class="bg-white px-4 rounded-md shadow-md py-3 flex mt-6 justify-between" v-else>
+             <!-- success -->
+                   <!-- configure -->
+               <div v-if="cbStatus == 'configure' " class="bg-white px-4 rounded-md shadow-md py-3 flex mt-6 justify-between" >
                   
                    <div class="flex items-center gap-x-4">
                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -25,10 +27,35 @@
 
                </div>
                   <!-- configure -->
+             
+             
+                  
+             <div v-if="cbStatus == 'success' "  class="alert bg-green-100 border border-green-400 text-green-700 mt-8">
+<div class="flex">
+<div class="flex-shrink-0">
+ <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+</svg>
+</div>
+<div class="ml-3 flex-1 md:flex md:justify-between">
+ <p class="description-only ">Chargebee Payments is Live! You are ready to start accepting payments </p>
+ <p class="mt-3 description-only md:mt-0 md:ml-6">
+   <a @click="$router.push('/configure-gateway')" class="alert-a cursor-pointer hover:underline hover:text-green-600">Payments Dashboard <span aria-hidden="true">&rarr;</span></a>
+ </p>
+</div>
+</div>
+</div>
+           
+                
+             <!-- success -->
+          
+
+            
+                  
 
             <h1 class="text-2xl font-semibold text-gray-900 "></h1>
             <section class="text-gray-600 body-font pt-10">
-                <img class="w-full" src="./../../assets/images/screencapture-sowmyakt-chargebee-dashboards-2022-01-30-18_26_45 2.png" alt="">
+                <img class="w-full" src="./../../assets/images/main.png" alt="">
             </section>
             
             <div class=" relative hidden">
@@ -69,9 +96,21 @@ import CbReview from "../../components/payments/CbReview.vue"
     },
     data(){},
     computed: {
+      cbStatus(){
+        return this.$store.getters['cbReviewStatus']
+      },
       cbReviewcomp(){
         return this.$store.getters['cbReview']
+      },
+      cbSuccesscomp(){
+        return this.$store.getters['cbPaymentSuccess']
+      },
+      cbConfigure(){
+        return this.$store.getters['cbConfigure']
       }
+    },
+     mounted() {
+       console.log( this.$store.getters['cbPaymentSuccess'])
     }
   }
 </script>

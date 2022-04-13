@@ -14,7 +14,7 @@
  <p class="description-only text-gray-500 ">We will send an email to xxx@yyy.com when the status of your application changes. If you have questions about your application, look through our FAQ before you write to support@chargebee.com.</p>
    </div>
  <p class="mt-3 description-only md:mt-0 md:ml-6">
-   <a href="#" class="alert-a text-blue-700 hover:text-blue-600">Details <span aria-hidden="true">&rarr;</span></a>
+   <router-link to="/configure-gateway" class="alert-a text-blue-700 hover:text-blue-600">Details <span aria-hidden="true">&rarr;</span></router-link>
  </p>
 </div>
 </div>

@@ -9,7 +9,8 @@ import ConfigurePayments from '../view/settings/configure-chargebee/configure/Co
 import BusinessProfile from '../view/settings/configure-chargebee/configure/BusinessProfile.vue'
 import OperationsOwnership from '../view/settings/configure-chargebee/configure/OperationsOwnership.vue'
 import Settlement from '../view/settings/configure-chargebee/configure/Settlement.vue';
-import SettlementSuccess from '../view/settings/configure-chargebee/configure/SettlementSuccess.vue'
+import SettlementSuccess from '../view/settings/configure-chargebee/configure/SettlementSuccess.vue' 
+import ConfigureGateway from '../view/configure/ConfigureGateway.vue'
 
 
 const routes = [
@@ -34,6 +35,10 @@ const routes = [
             {
                 path: '/payment_gateways',
                 component: PaymentGateway
+            },
+            {
+                path: '/configure-gateway',
+                component: ConfigureGateway
             }
         ]
     },
@@ -67,6 +72,11 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes,
+    scrollBehavior(to, from, savedPosition) {
+      //  console.log(to, from, savedPosition)
+        return {left:0, top:0}
+    }
+
 })
 
 export default router

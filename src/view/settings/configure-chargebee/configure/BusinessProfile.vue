@@ -10,7 +10,7 @@
                     <aside class="py-6 px-2 sm:px-6 lg:py-0 lg:px-0 lg:col-span-2 hidden md:block" >
       <nav class="space-y-1 nav " :class="scroll ? 'fixed pt-40' : 'static'" >
         <!-- Current: "bg-gray-50 text-indigo-700 hover:text-indigo-700 hover:bg-white", Default: "text-gray-900 hover:text-gray-900 hover:bg-gray-50" -->
-        <button @click="scrollIntoView" class="text-gray-900 hover:text-gray-900 hover:bg-gray-50 group rounded-md px-3 py-2 flex items-center text-sm font-medium" aria-current="page">
+        <button @click="scrollIntoView(0, 'bp')" :class="scrollMenu == 'bp' ? 'bg-purple-100': 'bg-transparent'" class="text-gray-900 hover:text-gray-900 hover:bg-purple-100 group rounded-md px-3 py-2 flex items-center text-sm font-medium" aria-current="page">
          
           <svg class="text-indigo-500 group-hover:text-indigo-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -20,7 +20,7 @@
           </span>
         </button>
   
-        <a href="#additional_contact" class="text-gray-900 hover:text-gray-900 hover:bg-gray-50 group rounded-md px-3 py-2 flex items-center text-sm font-medium">
+        <a @click="scrollIntoView(180, 'ac')"  :class="scrollMenu =='ac' ? 'bg-purple-100': 'bg-transparent'"  class=" cursor-pointer text-gray-900 hover:text-gray-900 hover:bg-gray-50 group rounded-md px-3 py-2 flex items-center text-sm font-medium">
           <!-- Heroicon name: outline/key -->
           <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
@@ -42,7 +42,7 @@
              <div class="space-y-6 sm:px-6 lg:px-0 lg:col-span-9">
      
   
-      <form action="#" method="POST" id="create_customer">
+      <form action="#" method="POST" id="b_div">
         <div class="shadow sm:rounded-md sm:overflow-hidden">
           <div class="bg-white py-6 px-4 space-y-6 sm:p-6">
             <div>
@@ -176,7 +176,8 @@
 export default {
     data(){
         return {
-            scroll:false
+            scroll:false,
+            scrollMenu: 'bp',
         }
     },
     computed: {
@@ -187,7 +188,7 @@ export default {
     methods: {
         handeleScroll(event){
             let scrollPostion = document.documentElement.scrollTop;
-             console.log(scrollPostion)
+            //  console.log(scrollPostion)
              
             let mainH = document.querySelector('#mainHeader');
             if(window.scrollY > mainH.offsetTop) {
@@ -196,7 +197,7 @@ export default {
                 this.scroll = false
             }
         },
-        scrollIntoView() {
+        scrollIntoView1() {
     //          const [el] = this.$refs["container"];
     //          el.scrollTop = el.scrollHeight;
     //          console.log(el.scrollIntoView)
@@ -204,7 +205,7 @@ export default {
     //     el.scrollIntoView({ behavior: "smooth", block: "end" });
     //   }
      let scrollPostion = document.documentElement.scrollTop;
-     console.log(scrollPostion)
+    //  console.log(scrollPostion)
     let cont = document.querySelector('#container')
     const contt = this.$refs['container'].getBoundingClientRect().top;
     let conttt = contt;
@@ -214,10 +215,17 @@ export default {
     }
      
 
-    console.log(cont)
+    // console.log(cont)
     this.scroll = false;
 
    // this.$refs["container"].scrollIntoView({behavior: 'smooth'});
+        },
+
+
+        scrollIntoView(scrollPos, menu) {
+          this.scrollMenu = menu;
+
+       window.scrollTo({ top: scrollPos, behavior: 'smooth' });
         }
     },
     created(){

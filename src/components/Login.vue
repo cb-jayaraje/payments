@@ -7,7 +7,7 @@
          
 
             <div class="sm:mx-auto sm:w-full sm:max-w-md  md:w-full md:max-w-xl">
-              <img class="mx-auto h-16 w-auto" src="./../assets/images/chargebee-logotype 1.svg" alt="Workflow">
+              <img class="mx-auto h-16 w-auto" src="./../assets/images/chargebee-logotype1.svg" alt="Workflow">
               <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
                 Sign in to your account
               </h2>
@@ -52,7 +52,7 @@
                       Sign in 
                       </button> -->
 
-                       <button type="submit"  class="w-full flex justify-center py-3 px-4  border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                       <button type="button" @click="$router.push('/')"  class="w-full flex justify-center py-3 px-4  border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                       Sign in 
                       </button>
                   </div>

@@ -68,7 +68,7 @@ import store from "../../../../store";
 export default {
     methods: {
         onClickSuccess() {
-            this.$store.dispatch('cbReviewOpen', {cbReview: true});
+            this.$store.dispatch('cbReviewChange', {cbStatus: 'review'});
             this.$router.push('/');
         }
     }   

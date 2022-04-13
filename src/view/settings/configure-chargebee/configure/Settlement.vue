@@ -1,7 +1,7 @@
 <template>
        <section>
-
-         <settlement-success></settlement-success>
+<!-- 
+         <settlement-success></settlement-success> -->
 
          <div class=" p-10 max-w-7xl ">
             <div class="grid grid-cols-12 ">
