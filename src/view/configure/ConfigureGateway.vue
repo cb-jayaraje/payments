@@ -1,6 +1,6 @@
 <template>
     
-       <configure-header :pageTitle="'Chargebee Payments'" :breadcrumb="'Configure Chargebee/Payment Gateways'"></configure-header>
+       <configure-header :pageTitle="'Chargebee Payments'" :breadcrumb="'Configure Chargebee/Payment Gateways'" :isAction1="true"></configure-header>
 
        <!-- This example requires Tailwind CSS v2.0+ -->
 <div class="px-6 min-h-screen">
@@ -291,7 +291,7 @@ export default {
                     
 
                     
-               }, 2000)
+               }, 5000)
             }
         }
     },
@@ -305,7 +305,7 @@ export default {
             setTimeout(()=>{
                 this.goLiveLine = true
                 //this.$router.push('/payment_gateways')
-            }, 2000)
+            }, 5000)
         },
 
         chanagePageToPayments() {

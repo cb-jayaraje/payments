@@ -2,12 +2,14 @@ import { createStore } from "vuex";
 import billingModules from './modules/billingList.js'
 import benefitaryModules from './modules/benetiary'
 import settlementModules from "./modules/settlement.js";
+import userDetail from "./modules/userDetail.js";
 
 const store = createStore({
     modules: {
         billing:billingModules,
         beneDetails: benefitaryModules,
-        settlement: settlementModules
+        settlement: settlementModules,
+        userDetail: userDetail
     },
     state() {
         return {
@@ -17,7 +19,11 @@ const store = createStore({
             cbPaymentSuccess: false,
             step: 'step1',
             cbConfigure: true,
-            cbReviewStatus: 'configure'
+            cbReviewStatus: 'configure',
+            userAuth: false,
+            sandBoxModel: true,
+           
+
         }
     },
     mutations: {
@@ -40,6 +46,12 @@ const store = createStore({
 
         changeCbReviewStatus(state, payload) {
             state.cbReviewStatus = payload.cbStatus
+        },
+        setUserAuth(state, payload){
+            state.userAuth = payload.isUserAuth
+        },
+        setSandBoxModal(state, payload){
+            state.sandBoxModel = payload.isModal
         }
     },
     actions: {
@@ -60,6 +72,12 @@ const store = createStore({
         },
         cbReviewChange(context, payload){
             context.commit('changeCbReviewStatus', payload)
+        },
+        cbUserAuth(context,payload){
+            context.commit('setUserAuth', payload)
+        },
+        cbSandBox(context, payload) {
+            context.commit('setSandBoxModal', payload)
         }
     },
     getters:{
@@ -83,7 +101,14 @@ const store = createStore({
         },
         cbReviewStatus(state) {
             return state.cbReviewStatus
+        },
+        isAuthendicated(state) {
+            return state.userAuth
+        },
+        sandBoxModal(state) {
+            return state.sandBoxModel
         }
+        
 
     }
 });

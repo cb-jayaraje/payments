@@ -11,15 +11,12 @@
             </div>
        </div>
 
-        <!-- <div>
+        <div v-show="isActionButton">
             
-             <button type="button" class="btn-outline px-4 py-2 text-sm items-center bg-purple-900 text-white hover:bg-purple-800 ">
-                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-</svg>
-                 Add Gateway</button>
+             <button type="button" @click="$router.push('/')" class="btn-outline px-4 py-2 text-sm items-center ">
+              Go Back To Chargebee App</button>
                 
-        </div> -->
+        </div>
 
     </div>
 </template>
@@ -30,6 +27,15 @@ export default {
     props: {
         pageTitle: String,
         breadcrumb: String,
+        isAction1: Boolean,
+        
+    },
+    computed:{
+        isActionButton(){
+            return this.isAction1
+        }
+    },
+    mounted(){
         
     }
 }

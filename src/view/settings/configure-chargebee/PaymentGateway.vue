@@ -28,7 +28,7 @@
 
 
     <!--two column-->
-    <div class="grid grid-cols-8 px-6 py-8">
+    <div class="grid grid-cols-8 px-6 py-8 min-h-screen">
         <!--left column-->
         <div class="col-span-5">
             <!--alert-->
@@ -59,7 +59,7 @@
             <div class="h-5"></div>
             <!--card -->
 
-            <div class="bg-white rounded-lg p-6 relative" v-if="!cbReview">
+            <div class="bg-white rounded-lg p-6 relative" v-if="cbReview == 'configure'">
                 <div class="grid grid-cols-2 gap-6">
                     <div class="flex items-center gap-x-6 animate-pulse" v-for="item in [1,2,3,4]" :key="item">
                         <div class="bg-gray-100 h-16 w-20"></div>
@@ -83,7 +83,7 @@ ADD A GATEWAY to get started.</p>
                     <div class="bg-white rounded-lg p-6 relative flex items-center justify-between">
                         <div class="flex items-center gap-x-8">
                             <img src="./../../../assets/images/chargebee-payments.svg" class="h-10" alt="">
-                            <p>Chargebee Payments</p>
+                            <p>Chargebee Payments </p>
                         </div>
 
                         <a @click="cbPaymentActive"  class=" cursor-pointer hover:underline inline-flex items-center text-xs text-blue-600">Manage <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -96,8 +96,52 @@ ADD A GATEWAY to get started.</p>
             <!--card -->
 
             <div class="text-base font-semibold py-6">Configure Gateways</div>
+
+
+            <div class="bg-white rounded-lg  shadow-sm">
+                <div class="flex border-b">
+                    <div class="flex gap-x-4 border-r  items-center p-6">
+                        <img src="https://dgkxwewtzsnml.cloudfront.net/static/app-static-assets/cb-vue/cb-vue-2022.04.21-16.17/images/cn-gw-icon-stripe.png" class=" h-16" alt="">
+                        <div>
+                            <p class="text-lg font-semibold">Stripe</p>
+                            <p class="text-sm text-gray-400 pr-10">The best way to accept payments online an in mobile apps</p>
+                        </div>
+                    </div>
+
+                     <div class="flex gap-x-4 border-r items-center p-6">
+                        <img src="./../../../assets/images/checkout.svg" class="h-16" alt="">
+                        <div>
+                            <p class="text-lg font-semibold">Checkout.com</p>
+                            <p class="text-sm text-gray-400 pr-10">The best way to accept payments online and in mobile apps.</p>
+                        </div>
+                    </div>
+
+                 
+                </div>
+
+
+                <div class="flex border-b">
+                    <div class="flex gap-x-4 border-r  items-center p-6">
+                        <img src="./../../../assets/images/go-card.svg" class=" h-16" alt="">
+                        <div>
+                            <p class="text-lg font-semibold">Go Cardless</p>
+                            <p class="text-sm text-gray-400 pr-10">The best way to accept payments online an in mobile apps</p>
+                        </div>
+                    </div>
+
+                     <div class="flex gap-x-4 border-r items-center p-6 hover:bg-purple-50 cursor-pointer" @click="onClickPayment">
+                        <img src="./../../../assets/images/cb-payment.svg" class="h-16" alt="">
+                        <div>
+                            <p class="text-lg font-semibold flex gap-x-2">Chargebee Payments <span class="inline-flex items-center px-2.5  rounded-full text-xs font-medium bg-purple-100 text-purple-800"> New </span></p>
+                            <p class="text-sm text-gray-400 pr-10">The best way to accept payments online and in mobile apps.</p>
+                        </div>
+                    </div>
+
+                 
+                </div>
+            </div>
             <!--checkout-->
-            <img class="w-full" src="./../../../assets/images/payment-gateway-list.png" alt="">
+           
 
  <!--checkout-->
 
@@ -135,8 +179,8 @@ ADD A GATEWAY to get started.</p>
 
 
     <!-- chargebee payments model -->
-<div v-show="cbReview === 'configure'">
-<base-modal v-show="paymentModal">
+
+<base-modal v-if="isModal==true"  >
     
 
      <div v-click-outside="closeModal" class="relative w-full inline-block align-bottom bg-white rounded-lg pt-5 pb-4 text-left  shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-5xl sm:w-full ">
@@ -145,9 +189,9 @@ ADD A GATEWAY to get started.</p>
       
           <div class="flex px-20 py-5 justify-between items-center">
               <img src="./../../../assets/images/chargebee-payments.svg" class="h-10" alt="">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-</svg>
+</svg> -->
           </div>
 
           <div class="bg-purple-900 flex items-center py-10">
@@ -196,9 +240,9 @@ ADD A GATEWAY to get started.</p>
       <div class="text-right px-20 py-10">
           
             <div class="flex items-center justify-end gap-x-4">
-                <button type="button" class="btn-outline px-4 py-2 text-sm ">Not right now, later</button>
+                <button type="button" class="btn-outline px-4 py-2 text-sm " @click="onClickLater">Not right now, later</button>
                 <button type="button" class="btn-outline px-4 py-2 text-sm ">Share this Info</button>
-                <router-link to="/configure-chargebee-payments" class="btn-outline px-4 py-2 text-sm bg-orange-500 text-white hover:bg-orange-600  focus:ring-orange-500">Try Sandbox now</router-link>
+                <button @click="onClickSandbox"  class="btn-outline px-4 py-2 text-sm bg-orange-500 text-white hover:bg-orange-600  focus:ring-orange-500">Try Sandbox now</button>
             </div>
            
       </div>
@@ -206,7 +250,7 @@ ADD A GATEWAY to get started.</p>
     </div>
   
 </base-modal>
-</div>
+
            
 </template>
 
@@ -228,23 +272,46 @@ export default {
     computed: {
        cbReview(){
            return this.$store.getters['cbReviewStatus']
-       }
+       },
+        isModal(){
+            return this.$store.getters['sandBoxModal']
+        }
     },
     methods:{
+
+        onClickSandbox(){
+            this.$store.dispatch('cbSandBox', {isModal: false})
+this.$router.push('/configure-chargebee-payments');
+        },
+
         closeModal() {
-            this.paymentModal = false
+        //    this.$store.dispatch('cbSandBox', {isModal: false})
         },
         cbPaymentActive(){
+            
             this.$store.dispatch('cbReviewChange', {cbStatus: 'success'});
             this.$router.push('/configure-gateway')
+        },
+        onClickPayment(){
+            this.$router.push('/configure-chargebee-payments')
+        },
+        onClickLater(){
+            this.$store.dispatch('cbSandBox', {isModal: false})
         }
     },
 
     created() {
-        setTimeout(()=>{
-            this.paymentModal = true
-        }, 1000);
+
+        console.log('ismodal ', this.$store.getters['sandBoxModal'])
+
+        // setTimeout(()=>{
+        //     this.paymentModal = true
+        // }, 1000);
+         //this.paymentModal = true
     },
+    mounted() {
+        console.log("payment ", this.$store.getters['cbReviewStatus']);
+    }
    
     
 }

@@ -11,18 +11,22 @@ import OperationsOwnership from '../view/settings/configure-chargebee/configure/
 import Settlement from '../view/settings/configure-chargebee/configure/Settlement.vue';
 import SettlementSuccess from '../view/settings/configure-chargebee/configure/SettlementSuccess.vue' 
 import ConfigureGateway from '../view/configure/ConfigureGateway.vue'
+import Compo from '../view/Compo.vue'
+import store from './../store/index'
 
 
 const routes = [
     {
         path:'/login',
         name: 'Signin',
-        component: Signin
+        component: Signin,
+        meta: {alreadyAuth: true},
     },
     {
         path: '/',
         name: 'Dashboard',
         component: Dashboard,
+        meta:{ requiresAuth: true},
         children: [
             {
                 path: '',
@@ -46,6 +50,7 @@ const routes = [
         path: '/configure-chargebee-payments',
         name: 'configure',
         component: ConfigurePayments,
+        meta: {requiresAuth: true},
         children: [
             {
                 path: '',
@@ -64,7 +69,13 @@ const routes = [
     },
     {
         path: '/settelment-success',
+        meta: {requiresAuth: true},
         component: SettlementSuccess
+    },
+    {
+        path: '/test',
+        component: Compo,
+        meta: {requiresUnAuth: true}
     }
 
 ];
@@ -78,5 +89,19 @@ const router = createRouter({
     }
 
 })
+
+router.beforeEach(function(to, from, next){
+    console.log("befor ", store.getters.isAuthendicated)
+    if(to.meta.requiresAuth && !store.getters.isAuthendicated) {
+        next('/login')
+    } else if(to.meta.requiresUnAuth && store.getters.isAuthendicated){
+        next('/test')
+    }else if (to.meta.alreadyAuth && store.getters.isAuthendicated){
+        next('/')
+    }
+    else {
+    next();
+    }
+});
 
 export default router

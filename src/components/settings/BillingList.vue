@@ -1,7 +1,7 @@
 <template>
    
        
-              <a  class="block hover:bg-gray-50 cursor-pointer">
+              <a @click="goto(billingList.link)"  class="block hover:bg-gray-50 cursor-pointer">
                 <div class="list-group--card">
                   <div class="list-group--body">
                     <div class="truncate">
@@ -34,11 +34,18 @@
 
 </template>
 
-<script>
+<script>import router from "../../router";
+
     export default {
 
         props: {
             billingList: Object
+        },
+        methods: {
+          goto(link) {
+           
+            router.push(link)
+          }
         }
 
     }

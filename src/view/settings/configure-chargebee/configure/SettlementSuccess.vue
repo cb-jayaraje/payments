@@ -19,9 +19,7 @@
 
      <!-- nav -->
   
-         <button type="button" @click="onClickSuccess" class="inline-flex items-center px-8 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            Go to Home
-          </button>
+    
      <!-- nav -->
         </div>
         
@@ -32,29 +30,24 @@
     </header>
     </div>
 
-  <div class=" py-10 px-16">
-        <div class="alert bg-green-50 max-w-md">
- <div class="flex">
-   <div class="flex-shrink-0">
-     <svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-       <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-     </svg>
-   </div>
-   <div class="ml-3 description-only">
-     <p class="font-medium text-green-800">Successfully submitted for review</p>
-   </div>
-  
- </div>
-</div>
+  <div class=" py-10 px-16 w-[40%] m-auto space-y-4">
 
-    <p class="text-sm">Your application will be reviewed within the next 48 hours.</p>
+      <img src="./../../../../assets/images/Candidate-suucess.svg">
 
-    <div class="space-y-3 pt-8">
+      <p class="text-gray-700 text-2xl font-semibold leading-8">Application submitted successfully</p>
+      <p class="text-sm leading-5 font-normal text-gray-500">Your application will be reviewed within the next <span class="text-black">48 hours</span>.</p>
+
+ 
+
+
+
+    <div class="space-y-5 pt-14">
         <p class="text-sm font-semibold text-gray-500">Help and Support</p>
-        <ul class="text-sm text-gray-500 font-light space-y-2 list-disc list-inside">
+        <ul class="text-sm text-gray-500 font-light list-disc list-outside pl-6 space-y-5">
             <li>We will send an email to xxx@yyy.com when the status of your application changes.</li>
 <li>If you have questions about your application, look through our <span class="text-blue-500">FAQ</span> before you write to <span class="text-gray-600 font-semibold">support@chargebee.com.</span></li>
         </ul>
+         <button @click="onClickSuccess" type="button" class="btn-outline px-4 py-2 text-sm bg-purple-800 text-white hover:bg-purple-900  focus:ring-purple-500">Go Back To Chargebee App</button>
     </div>
 
   </div>

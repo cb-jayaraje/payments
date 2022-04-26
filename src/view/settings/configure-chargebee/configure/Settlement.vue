@@ -48,7 +48,7 @@
             <div>
               <h3 class="text-lg leading-6 font-medium text-gray-900">Additional Underwriting Data</h3>
 
-               <p class="text-xs text-gray-400 mt-1">Please enter additional underwriting information</p>
+               <p class="text-xs text-gray-400 mt-1">Fill in additional underwriting details</p>
             </div>
   
             <div class="grid grid-cols-8 gap-6 ">
@@ -59,7 +59,8 @@
                <div class="mt-1">
               <input type="text" name="bill" id="bill" class="input">
             </div>
-            <p class="help-text" id="email-description">Support Text</p>
+            <p class="help-text" id="email-description">This is the business name that will show up on your customers' bank or credit/debit card 
+statements. Choose something they will recognize to help prevent disputes. (Max 200 characters).</p>
           </div>
                 
                 </div>
@@ -71,7 +72,7 @@
               <option>Select one</option>
               
             </select>
-            <p class="help-text" id="email-description">Support Text</p>
+            <p class="help-text" id="email-description">Select one of the values for your refund policy. If none of the values match your business model, Select other.</p>
           </div>
                 
                 </div>
@@ -95,7 +96,9 @@
                    <option>EUR</option>
                  </select>
                </div>
+               
              </div>
+              <p class="help-text">Divide the total value of all transactions by the number of transactions or sales.</p>
            </div>
            
             
@@ -121,6 +124,7 @@
                  </select>
                </div>
              </div>
+              <p class="help-text">Contact bank for the accurate details.</p>
            </div>
                 
                 </div>
@@ -219,18 +223,19 @@ card (Ecommerce)</p>
             <div class="shadow sm:rounded-md sm:overflow-hidden">
           <div class="bg-white py-6 px-4 space-y-6 sm:p-6">
             <div>
-              <h3 class="text-lg leading-6 font-medium text-gray-900">Bank Account</h3>
-              <p class="text-xs text-gray-400 mt-1">Please enter account information of the bank where you would like to receive payments</p>
+              <h3 class="text-lg leading-6 font-medium text-gray-900">Bank Account For Payouts</h3>
+              <p class="text-xs text-gray-400 mt-1">Fill in the bank account details where you want us to deposit funds to</p>
             </div>
 
                 <div class="grid grid-cols-8 gap-6 ">
                 <div class="col-span-6 ">
 
                                 <div class="form-control">
-            <label for="location" class="label">Billing Descriptor</label>
+            <label for="location" class="label">Bank Account Holder Name</label>
                <div class="mt-1">
               <input type="text" name="bill" id="bill" class="input">
             </div>
+            <p class=" help-text">Account owner’s full name (max 40 characters).</p>
           </div>
                 
                 </div>
@@ -252,7 +257,7 @@ card (Ecommerce)</p>
             <label for="location" class="label">Bank Account Routing Number</label>
                <div class="mt-1">
               <input type="text" name="bill" id="bill" class="input">
-              <p class="help-text" id="email-description">Support Text</p>
+              <p class="help-text" id="email-description">Nine-digit code used by financial institutions to identify other financial institutions.</p>
             </div>
           </div>
                 
@@ -266,7 +271,7 @@ card (Ecommerce)</p>
               <option>Business</option>
               
             </select>
-            <p class="help-text" id="email-description">Support Text</p>
+            <p class="help-text" id="email-description">Select the type of account.</p>
           </div>
                 
                 </div>
@@ -281,7 +286,11 @@ card (Ecommerce)</p>
 
 
 
-  
+    <div class="flex gap-x-4">
+     <button @click="$router.back()"  class="btn-outline  px-2.5  ">Previous Step</button>
+
+                  <button @click="openModal" class="inline-flex bg-purple-700 rounded px-4 py-2 text-white">Next Step</button>
+               </div>
 
       <div class=" h-32"></div>
     </div>
@@ -295,10 +304,17 @@ card (Ecommerce)</p>
 
     <base-modal v-if="modal1">
         <div  class="relative w-full inline-block align-bottom bg-white rounded-lg pt-5 pb-4 text-left  shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full ">
-     
-      <div class="px-6"> 
+          
+
       
-        <p class="  text-base pb-2">Processing Rate</p>
+      <div class="px-6"> 
+
+        <div class="space-y-3 border-b pb-3 mb-5">
+        <p class="text-2xl font-medium leading-4">Review Charges and Terms & Conditions</p>
+        <p class="text-sm text-gray-500">Please review your application and accept the terms and conditions.</p>
+      </div>
+      
+        <p class="  text-base pb-2 font-semibold">Processing Rate</p>
         <p class="text-sm text-gray-400 pt-2">Please review the processing rate for every transaction. See full <span class="text-blue-400 inline-flex">Financial Disclosure <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
   <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
   <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
@@ -316,14 +332,51 @@ card (Ecommerce)</p>
 
         </div>
 
+
      
       </div>
-      <div class=" h-32"></div>
+       <div class="px-6 pt-8">
+          <p class="  text-base pb-2 font-semibold">Terms and Conditions</p>
+        <p class="text-sm text-gray-400 ">Please review your application and accept terms and conditions</p>
+
+        <fieldset class="space-y-5">
+  <legend class="sr-only">Notifications</legend>
+  <div class="relative flex items-start">
+    <div class="flex items-center h-5">
+      <input id="comments" aria-describedby="comments-description" name="comments" type="checkbox" checked class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+    </div>
+    <div class="ml-3 text-sm">
+      <label for="comments" class="font-medium text-gray-400 text-xs ">By submitting your merchant application you agree and to  <span class="text-blue-400 inline-flex">Sub-Merchant Agreement <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+  <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+  <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+</svg></span>     </label>
+      <ul class="text-xs space-y-2 text-gray-400 list-disc list-outside pt-2 pl-5">
+        <li class="">Certifying that all information you have provided is complete and correct. </li>
+           <li class="list-item">By selecting the “Submit Application” button, you are accepting and agreeing to the Sub- Merchant Agreement between you and Fattmerchant. </li>
+           <li>You agree that your selecting “Accept” is the legal euqivalent of manual signature to the Sub-Merchant Agreement and that you consent to be legally bound.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="relative flex items-start">
+    <div class="flex items-center h-5">
+      <input id="candidates" checked aria-describedby="candidates-description" name="candidates" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+    </div>
+    <div class="ml-3 text-sm">
+      <label for="candidates" class="font-medium text-gray-400 text-xs ">You further agree to provide written authorzation to undergo a credit check as part of the 
+<span class="text-blue-400 inline-flex">FCRA Permissible Purpose Guidelines  </span> </label>
+     
+    </div>
+  </div>
+  
+</fieldset>
+
+        </div>
+     
       <div class="text-right px-6 py-10">
           
             <div class="flex items-center justify-end gap-x-4">
                 <button type="button" class="btn-outline px-4 py-2 text-sm " @click="closeModal">Cancel</button>
-                <button @click="openModal2" type="button" class="btn-outline px-4 py-2 text-sm bg-purple-800 text-white hover:bg-purple-900  focus:ring-purple-500">next</button>
+                <button @click="$router.push('/settelment-success')" type="button" class="btn-outline px-4 py-2 text-sm bg-purple-800 text-white hover:bg-purple-900  focus:ring-purple-500 w-64">I Accept</button>
             </div>
            
       </div>
@@ -415,6 +468,10 @@ export default {
   },
 
   methods: {
+
+    openModal(){
+         this.$store.dispatch('settlement/modalOpen', {modalOpen: true})
+    },
     closeModal() {
       this.$store.dispatch('settlement/modalOpen', {modalOpen: false})
     },

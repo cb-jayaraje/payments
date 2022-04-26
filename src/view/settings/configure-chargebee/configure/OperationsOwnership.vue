@@ -45,6 +45,7 @@
           <div class="bg-white py-6 px-4 space-y-6 sm:p-6">
             <div>
               <h3 class="text-lg leading-6 font-medium text-gray-900"> Business Structure</h3>
+              <p class="text-xs text-gray-600">Fill in your business details.</p>
             </div>
   
             <div class="grid grid-cols-8 gap-6 ">
@@ -56,7 +57,7 @@
               <option>Select one</option>
               
             </select>
-            <p class="help-text" id="email-description">Support Text</p>
+            <p class="help-text" id="email-description">Select what type of business you are.</p>
           </div>
                 
                 </div>
@@ -68,9 +69,19 @@
               <option>Select one</option>
               
             </select>
-            <p class="help-text" id="email-description">Support Text</p>
+            <p class="help-text" id="email-description">Select whether you are a pubically traded or privately held company. If you are a government agency, select public.</p>
           </div>
                 
+                </div>
+
+                <div class="col-span-8">
+                   <div class="form-control">
+            <label for="location" class="label">Employer Identification Number </label>
+              <input type="email" name="email" id="email" class="input" placeholder="2335454646">
+            <p class="help-text" id="email-description">Nine digit Tax Identification Number (TIN), Employer Identification Number (EIN), or if the business_type 
+is INDIVIDUAL_SOLE_PROPRIETERSHIP and a Tax ID is not available, then the principal’s Social Security 
+Number (SSN).</p>
+          </div>
                 </div>
 
                  <div class="col-span-6 sm:col-span-4">
@@ -92,7 +103,7 @@
                
               
               </div>
-              <p class="help-text" id="email-description">Support Text</p>
+              <p class="help-text" id="email-description">Enter the date your business was incorporated.</p>
             </div>
             
                 
@@ -102,9 +113,12 @@
                  <div class="col-span-6 sm:col-span-4">
 
                                 <div class="form-control">
-            <label for="location" class="label">Employer Identification Number </label>
-              <input type="email" name="email" id="email" class="input" placeholder="+1 2335454646">
-            <p class="help-text" id="email-description">Support Text</p>
+            <label for="location" class="label">Merchant Category Code</label>
+              <select id="location" name="location" class="select">
+              <option>Select</option>
+              
+            </select>
+            <p class="help-text" id="email-description">Four-digit number designated by credit card company.</p>
           </div>
                 
                 </div>
@@ -208,8 +222,14 @@
 
 
   
+  <div class="flex gap-x-4">
+     <button @click="$router.back()"  class="btn-outline  px-2.5 ">Previous Step</button>
 
+                  <button @click="$router.push('/settelment')" class="inline-flex bg-purple-700 rounded px-4 py-2 text-white">Next Step</button>
+               </div>
       <div class=" h-32"></div>
+
+      
     </div>
             <!-- right ends -->
             </div>
@@ -233,6 +253,7 @@
             <div class="mt-1">
               <input type="text" v-model="firstName" name="firstName" id="firstName" class="input" >
             </div>
+            <p class="help-text">Max 20 characters.</p>
           </div>
 
                      <div class="form-control">
@@ -240,6 +261,7 @@
             <div class="mt-1">
               <input type="text" name="lastName" id="lastName" class="input" >
             </div>
+            <p class="help-text">Max 20 characters.</p>
           </div>
 
        
@@ -249,6 +271,7 @@
             <div class="mt-1">
               <input type="text" name="jobTitle" id="jobTitle" class="input" >
             </div>
+            <p class="help-text">Max 60 characters.</p>
           </div>
 
               <div class="form-control">
@@ -259,10 +282,19 @@
           </div>
 
            <div class="form-control">
+            <label for="emailId" class="label">Email Address</label>
+            <div class="mt-1">
+              <input type="text" name="emailId" v-model="emailId" id="emailId" class="input"  placeholder="">
+            </div>
+            <p class="help-text">Max 100 characters.</p>
+          </div>
+
+              <div class="form-control">
             <label for="phone" class="label">Phone Number</label>
             <div class="mt-1">
-              <input type="text" name="phone" id="phone" class="input" placeholder="+1 2335454646">
+              <input type="text" name="phone" id="phone" class="input" >
             </div>
+            
           </div>
 
           
@@ -270,18 +302,40 @@
                 
         </div>
 
+        <p class="pt-10 text-base font-bold">Address</p>
 
-        <div class="grid grid-cols-1 gap-6 pt-6">
+        
 
+        <div class="grid grid-cols-2 gap-6 pt-6">
+
+          
+             <div class="form-control">
+            <label for="phone" class="label">Country / Region</label>
+        <select id="location" name="location" class="select">
+              <option>United States</option>
+              <option selected>Canada</option>
+              <option>Mexico</option>
+            </select>
+          </div>
            
-                      <div class="form-control">
-            <label for="address" class="label">Address</label>
+                      <div class=" col-span-2 form-control">
+            <label for="address" class="label">Address Line 1</label>
             <div class="mt-1">
               <input type="text" name="address" id="address" class="input" >
             </div>
+            <p class="help-text">Max 35 characters.</p>
+          </div>
+
+            <div class=" col-span-2 form-control">
+            <label for="address" class="label">Address Line 2</label>
+            <div class="mt-1">
+              <input type="text" name="address" id="address" class="input" >
+            </div>
+            <p class="help-text">Max 35 characters.</p>
           </div>
                 
         </div>
+        
 
          <div class="flex justify-between gap-x-4 pt-5">
          
@@ -290,32 +344,34 @@
             <div class="mt-1">
               <input type="text" name="city" id="city" class="input" >
             </div>
+            <p class="help-text">Max 20 characters.</p>
           </div>
 
-          <div class="form-control w-1/2">
+          <div class="form-control ">
             <label for="state" class="label">State</label>
             <div class="mt-1">
               <input type="text" name="state" id="state" class="input" >
             </div>
           </div>
 
-               <div class="form-control w-28">
+               <div class="form-control">
             <label for="zip" class="label">ZIP Code</label>
             <div class="mt-1">
               <input type="text" name="zip" id="zip" class="input" >
             </div>
+             <p class="help-text">Max 7 characters.</p>
           </div>
 
 
          </div>
 
-
+  <p class="pt-10 text-base font-bold">Ownership</p>
         <div class="grid grid-cols-2 gap-6 pt-6">
                       <div class="form-control">
             <label for="percentage" class="label">Principal Ownership Percentage</label>
             <div class="mt-1">
               <input type="text" v-model="percentage" name="percentage" id="percentage" class="input" >
-                <p class="help-text" id="email-description">Support Text</p>
+                <p class="help-text" id="email-description">Percentage of company owned (min 25; max 100).</p>
             </div>
           </div>
 
@@ -323,7 +379,7 @@
             <label for="tax" class="label" >Principal Tax ID</label>
             <div class="mt-1">
               <input type="text" name="tax" v-model="tax" id="tax" class="input" >
-              <p class="help-text" id="email-description">Support Text</p>
+              <p class="help-text" id="email-description">Nine digit Social Security Number (SSN).</p>
             </div>
           </div>
 
@@ -353,6 +409,7 @@
 import BenefitaryLists from "../../../../components/benefitary/BenefitaryLists.vue"
 import BaseModal from './../../../../components/common/BaseModal.vue'
 import AddBenefitiary from './../../../../components/benefitary/AddBenefitiary.vue'
+import { v4 as uuidv4 } from 'uuid'
 
 
   export default {
@@ -365,6 +422,7 @@ import AddBenefitiary from './../../../../components/benefitary/AddBenefitiary.v
       return {
         addBeneModal: false,
         firstName: '',
+        emailId: '',
         percentage: 0,
         tax: ''
       }
@@ -387,13 +445,20 @@ import AddBenefitiary from './../../../../components/benefitary/AddBenefitiary.v
     },
     addBeneDetail(){
 
-      const id = '_' + Math.random().toString(2).substr(2, 9);
+      //const id = '_' + Math.random().toString(2).substr(2, 9);
+
+      if(this.emailId === '' || this.name === '' || this.percentage === '' || this.tax === '') {
+        //return false;
+      }
+
       const detail = {
-        id,
+        id: uuidv4(),
         name: this.firstName,
         percent: this.percentage,
         tax: this.tax
       }
+
+     
 
       this.$store.dispatch('beneDetails/addtoBene', {bene: detail});
       this.closeModal();

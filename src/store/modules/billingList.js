@@ -28,7 +28,7 @@ export default {
                 id:'b8', title: "Consolidated invoicing", subTitle: "", text: ""
                 },
                  {
-                id:'b9', title: "Payment gateways", subTitle: "", text: "Stripe, + 1 more..."
+                id:'b9', title: "Payment gateways", subTitle: "", text: "Stripe, + 1 more...", link: "/payment_gateways"
                 },
                  {
                 id:'b10', title: "Chargeback management", subTitle: "", text: ""

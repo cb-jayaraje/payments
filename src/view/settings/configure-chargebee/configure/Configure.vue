@@ -32,22 +32,7 @@
         
         <!--tabs-->
 
-        <!--
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
+    
 <div class="pb-5 border-b border-gray-200 sm:pb-0">
  
   <div class="mt-3 sm:mt-10">
@@ -62,6 +47,8 @@
   <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
 </svg>
                 <p class="text-sm text-slate-500">1. Business Profile</p>
+                
+                
              </a>
 
          <a href="#" :class="step==='step2' ? 'border-indigo-500 text-indigo-600': 'border-transparent text-gray-500' " class="inline-flex gap-x-4  hover:text-gray-700 hover:border-gray-300 whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm"> 
